@@ -1,0 +1,18 @@
+{
+  "name": "vcchatrestrict",
+  "version": "0.1.0",
+  "description": "#vc はボイチャ民のものだ",
+  "main": "main.js",
+  "scripts": {
+    "start": "node main.js"
+  },
+  "author": "TeamFruit",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/Team-Fruit/VCChatRestrict.git"
+  },
+  "license": "MIT",
+  "dependencies": {
+    "discord.js": "^11.3.2"
+  }
+}
