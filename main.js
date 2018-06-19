@@ -28,14 +28,15 @@ client.on('voiceStateUpdate', (oldMember, newMember) => {
 });
 
 // ボイチャに入っていない人が書き込みをしたら、書き込みを削除して規制役職を付ける
-client.on('message', (message) => {
+client.on('message', message => {
     // if VCチャンネルだったら
-    if (message.channel.id === DiscordSettings.channel) {
+    if (DiscordSettings.channels.includes(message.channel.id)) {
         let member = message.member;
         // if ボイチャに入っていなかったら
         if (member.voiceChannel === undefined) {
             // if 規制役職が付いていなかったら
-            if (!member.roles.has(DiscordSettings.role)) {
+            if (!member.roles.has(DiscordSettings.role) &&
+                !DiscordSettings.whitelist.some(role => member.roles.has(role))) {
                 // 役職をつけて
                 member.addRole(DiscordSettings.role);
                 // メッセージを削除
